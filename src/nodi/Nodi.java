@@ -13,7 +13,7 @@ public class Nodi {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) 
+    public static void main(String[] args) throws CloneNotSupportedException 
     {
         Nodo <Integer> n=new Nodo <Integer>(9);
         Nodo <Integer> n2=new Nodo <Integer>(2);
@@ -34,22 +34,15 @@ public class Nodi {
             System.out.println("\n"+punt.getValore());
             punt=punt.getNext();
         }
-        System.out.println(lista.remove(2));
-        punt=lista.getTesta();
-        for(int i=0;i<lista.size();i++)
-        {
-           System.out.println("\n"+punt.getValore());
-           punt=punt.getNext();
-        }
-        Nodo<Integer> n6=new Nodo<Integer>(22); 
-        lista.push(n6);
-        punt=lista.getTesta();
-        for(int i=0;i<lista.size();i++)
-        {
-           System.out.println("\n"+punt.getValore());
-           punt=punt.getNext();
-        }
+        System.out.println("\n---------------------");
         
+        Lista<Integer>pippo=lista.sottolista(2);
+        Nodo<Integer> punt1=pippo.getTesta();
+        for(int i=0;i<pippo.size();i++)
+        {
+            System.out.println("\n"+punt1.getValore());
+            punt1=punt1.getNext();
+        }
     }
     
     

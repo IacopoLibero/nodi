@@ -9,7 +9,7 @@ package nodi;
  * @author iacop
  * @param <T>
  */
-public class Lista <T> implements Cloneable
+public class Lista <T extends Comparable> implements Cloneable
 {
     Nodo <T> testa;
 
@@ -143,6 +143,20 @@ public class Lista <T> implements Cloneable
             }
             attuale.getNext().setValore(v);
             return true;
+        }
+    }
+    
+    public void sort()
+    {
+        Nodo <T> n=testa;
+        for(int i=0;n.getNext()!=null;i++)
+        {
+            if(n.compareTo(n.getNext())==1)
+            {
+                n.scambioValore(n.getNext());
+                i=0;
+            }
+            n=n.getNext();
         }
     }
 }

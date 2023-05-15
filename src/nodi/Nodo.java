@@ -8,7 +8,7 @@ package nodi;
  *
  * @author iacop
  */
-public class Nodo <T> implements Cloneable
+public class Nodo <T extends Comparable> implements Cloneable,Comparable 
 {
     T valore;
     Nodo next;
@@ -47,4 +47,18 @@ public class Nodo <T> implements Cloneable
         
         return c;
     }
+
+    @Override
+    public int compareTo(Object o) 
+    {
+        return valore.compareTo(o);
+    }
+    
+    public void scambioValore(Nodo next)
+    {
+        T prov=(T) next.getValore();
+        next.setValore(this.getValore());
+        this.setValore(prov);
+    }
+    
 }
