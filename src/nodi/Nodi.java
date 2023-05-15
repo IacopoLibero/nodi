@@ -43,6 +43,8 @@ public class Nodi {
             System.out.println("\n"+punt1.getValore());
             punt1=punt1.getNext();
         }
+        System.out.println("\n---------------------");
+        pippo.toString();
     }
     
     

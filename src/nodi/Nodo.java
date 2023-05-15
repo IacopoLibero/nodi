@@ -36,7 +36,8 @@ public class Nodo <T extends Comparable> implements Cloneable,Comparable
     @Override
     public String toString()
     {
-        return valore.toString();
+        String s=String.valueOf(valore.toString());
+        return s;
     }
     @Override
     public Nodo <T> clone() throws CloneNotSupportedException
