@@ -7,6 +7,7 @@ package nodi;
 /**
  *
  * @author iacop
+ * @param <T>
  */
 public class Lista <T> implements Cloneable
 {
@@ -102,9 +103,10 @@ public class Lista <T> implements Cloneable
     {
         String s="";
         Nodo<T>punt=testa;
-        while(punt!=null)
+        while(punt.getNext()!=null)
         {
             s=s+punt.toString();
+            punt=punt.getNext();
         }
         return s;
     }
