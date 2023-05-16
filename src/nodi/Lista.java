@@ -17,7 +17,7 @@ public class Lista <T extends Comparable> implements Cloneable
     {
         testa=null;
     }
-    public Lista(Nodo n) 
+    public Lista(Nodo<T> n) 
     {
         testa=n;
     }
@@ -50,22 +50,16 @@ public class Lista <T extends Comparable> implements Cloneable
     }
     public int size()
     {
-        int n=0;
-        n++;
-        Nodo attuale=testa;
-        if(testa==null)
-        {
-            return 0;
+        Integer count = 0;
+        Nodo a = testa;
+        
+        while(a != null){
+            count ++;
+            a = a.getNext();
+            
         }
-        else
-        {
-            while(attuale.getNext()!=null)
-            {
-                n++;
-                attuale=attuale.getNext();
-            }
-        }
-        return n;   
+            
+        return count;
     }
     public boolean isEmpty()
     {
@@ -102,8 +96,11 @@ public class Lista <T extends Comparable> implements Cloneable
     public String toString()
     {
         String s="";
+        if(testa == null)
+                return "lista vuota";
+        
         Nodo<T>punt=testa;
-        while(punt.getNext()!=null)
+        while(punt!=null)
         {
             s=s+punt.toString();
             punt=punt.getNext();
@@ -148,15 +145,21 @@ public class Lista <T extends Comparable> implements Cloneable
     
     public void sort()
     {
-        Nodo <T> n=testa;
-        for(int i=0;n.getNext()!=null;i++)
+        Nodo<T> p = testa;
+        while(p != null)
         {
-            if(n.compareTo(n.getNext())==1)
+            Nodo<T>  p2 = p.getNext();
+            while(p2 != null)
             {
-                n.scambioValore(n.getNext());
-                i=0;
+                if(p.compareTo(p2) > 0)
+                {
+                    T temp = p.getValore();
+                    p.setValore( p2.getValore() );
+                    p2.setValore(temp);
+                }
+                p2=p2.getNext();    
             }
-            n=n.getNext();
+            p=p.getNext();
         }
     }
 }

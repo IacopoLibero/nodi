@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author iacop
  */
-public class Persona 
+public class Persona implements Cloneable, Comparable<Persona>
 {
     private String nome;
     private String cognome;
@@ -39,6 +39,12 @@ public class Persona
     {
         String s="\nNome: "+this.getNome()+" Cognome: "+this.getCognome()+" CF: "+this.getCf();
         return s;
+    }
+
+    @Override
+    public int compareTo(Persona o) 
+    {
+        return this.getNome().compareTo(o.getNome());
     }
    
 }

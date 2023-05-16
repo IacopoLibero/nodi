@@ -8,10 +8,10 @@ package nodi;
  *
  * @author iacop
  */
-public class Nodo <T extends Comparable> implements Cloneable,Comparable 
+public class Nodo <T extends Comparable> implements Cloneable,Comparable <Nodo<T>> 
 {
     T valore;
-    Nodo next;
+    Nodo <T> next;
 
     public Nodo(T valore) {
         this.valore = valore;
@@ -36,9 +36,9 @@ public class Nodo <T extends Comparable> implements Cloneable,Comparable
     @Override
     public String toString()
     {
-        String s=String.valueOf(valore.toString());
-        return s;
+        return valore.toString();
     }
+    
     @Override
     public Nodo <T> clone() throws CloneNotSupportedException
     {
@@ -49,17 +49,11 @@ public class Nodo <T extends Comparable> implements Cloneable,Comparable
         return c;
     }
 
+
     @Override
-    public int compareTo(Object o) 
+    public int compareTo(Nodo<T> o) 
     {
-        return valore.compareTo(o);
-    }
-    
-    public void scambioValore(Nodo next)
-    {
-        T prov=(T) next.getValore();
-        next.setValore(this.getValore());
-        this.setValore(prov);
+        return valore.compareTo(o.getValore());
     }
     
 }
