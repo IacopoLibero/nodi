@@ -13,6 +13,10 @@ public class Lista <T extends Comparable> implements Cloneable
 {
     Nodo <T> testa;
 
+    public void setTesta(Nodo<T> testa) {
+        this.testa = testa;
+    }
+
     public Lista() 
     {
         testa=null;
@@ -90,7 +94,7 @@ public class Lista <T extends Comparable> implements Cloneable
     public void push(Nodo <T> n)
     {
         n.setNext(testa);
-        testa=n;
+        this.setTesta(n);
     }
     @Override
     public String toString()
@@ -161,5 +165,32 @@ public class Lista <T extends Comparable> implements Cloneable
             }
             p=p.getNext();
         }
+    }
+    
+    public void inserimento_ordinato(T v)
+    {
+        Nodo<T> attuale=testa;
+        Nodo<T> da_inserire=new Nodo(v);
+        
+        if(testa== null)
+            testa=da_inserire;
+        else if(attuale.getValore().compareTo(da_inserire.getValore()) >0)
+        {
+            da_inserire.setNext(testa);
+            testa=da_inserire;
+        }
+        else
+        {            
+            while(attuale.getNext().getValore().compareTo(da_inserire.getValore())<0 && attuale!=null)
+            {
+                attuale=attuale.getNext();
+                System.out.println("\nattuale: "+attuale.getValore());
+            }
+           
+            Nodo<T> cominicazione=attuale.getNext();
+            attuale.setNext(da_inserire);
+            da_inserire.setNext(cominicazione);
+        }
+            
     }
 }
