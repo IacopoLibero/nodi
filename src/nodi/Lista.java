@@ -181,15 +181,23 @@ public class Lista <T extends Comparable> implements Cloneable
         }
         else
         {            
-            while(attuale.getNext().getValore().compareTo(da_inserire.getValore())<0 && attuale!=null)
+            while(attuale.getValore().compareTo(da_inserire.getValore())<0 && attuale.getNext()!=null)
             {
                 attuale=attuale.getNext();
                 System.out.println("\nattuale: "+attuale.getValore());
             }
-           
-            Nodo<T> cominicazione=attuale.getNext();
-            attuale.setNext(da_inserire);
-            da_inserire.setNext(cominicazione);
+            if(attuale.getNext()!=null)
+            {
+                Nodo<T> cominicazione=attuale.getNext();
+                attuale.setNext(da_inserire);
+                da_inserire.setNext(cominicazione);
+            }
+            else
+            {
+                attuale.setNext(da_inserire);
+                attuale.getNext().setNext(null);
+            }
+            
         }
             
     }

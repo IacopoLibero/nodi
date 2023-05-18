@@ -40,7 +40,7 @@ public class Nodi {
             }
             System.out.println("\n---------------------");
         }
-        lista.inserimento_ordinato(10);
+        lista.inserimento_ordinato(11);
         Nodo<Integer> punt=lista.getTesta();
         
         for(int i=0;i<lista.size();i++)
